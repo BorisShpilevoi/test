@@ -1,4 +1,4 @@
-program project1;
+program L7;
 uses SysUtils;
 const CRLF=#13#10;
 function Chomp(s: string): string;
@@ -7,8 +7,10 @@ var
 begin
   result:='';
   Length_s:=Length(s);
-  if Length_s>1 then begin
-     result:=LeftStr(s,Length_s-1);
+  if (Length_s>length(CRLF))
+     and  (RightStr(s,length(CRLF))=CRLF) then
+  begin
+     result:=LeftStr(s,Length_s-length(CRLF));
   end;
 end;
 var s:string;
